@@ -1,11 +1,11 @@
 import React from 'react';
-import T4_26 from './tutorial/1-useState/T4-26-useState-object';
+import T23_26 from './tutorial/2-useEffect/T23-26-useEffect-fetch-data';
 
 const App_26 = () => {
   return (
     <div className='container'>
-      <h2>Tutorial 4 - 210410626</h2>
-      <T4_26 />
+      <h2>Tutorial  T23-210410626</h2>
+      <T23_26 />
     </div>
   );
 };

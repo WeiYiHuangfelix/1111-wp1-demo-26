@@ -1,11 +1,11 @@
 import React from 'react';
-import T23_26 from './tutorial/2-useEffect/T23-26-useEffect-fetch-data';
+import T21_26 from './tutorial/2-useEffect/T21-26-useEffect-basics';
 
 const App_26 = () => {
   return (
     <div className='container'>
-      <h2>Tutorial  T23-210410626</h2>
-      <T23_26 />
+      <h2>Tutorial  T21-210410626</h2>
+      <T21_26 />
     </div>
   );
 };

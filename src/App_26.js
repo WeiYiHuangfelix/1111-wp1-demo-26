@@ -1,11 +1,11 @@
 import React from 'react';
-import T21_26 from './tutorial/2-useEffect/T21-26-useEffect-basics';
+import T31_26 from './tutorial/3-conditional-rendering/T31-26-multiple-returns';
 
 const App_26 = () => {
   return (
     <div className='container'>
-      <h2>Tutorial  T21-210410626</h2>
-      <T21_26 />
+      <h2>Tutorial  T31-210410626</h2>
+      <T31_26 />
     </div>
   );
 };

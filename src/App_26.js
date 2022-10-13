@@ -35,12 +35,19 @@ const App_26 = () => {
   <>
     <section className='section-center'>
       <form className='grocery-form' onSubmit={handleSubmit}>
+        {alert.show && <Alert_26 {...alert} removeAlert = {showAlert} />}
         <h3>Grocery Bud - 210410626</h3>
           <div className='form-control'>
             <input type='text' className='grocery' placeholder='e.g.eggs' value={name} onChange = {(e) => {setName(e.target.value)}}/>
             <button type='submit' className='submit-btn' placeholder='e.g.'>submit</button>
           </div>
       </form>
+      {list.length > 0 && (
+        <div className='grocery-containr'>
+            <List_26 items = {list}/>
+            <button className='clear-btn'> clear items</button>
+        </div>
+      )}
     </section>
   
   </>

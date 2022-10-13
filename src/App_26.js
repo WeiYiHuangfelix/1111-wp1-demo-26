@@ -44,6 +44,16 @@ const App_26 = () => {
     }
   };
 
+  const removeItem = (id) => {
+    showAlert(true, 'item remove', 'dangr');
+    setList(list.filter( (item) => item.id !== id));
+  }
+
+  const clearList = () => {
+    showAlert(true, 'item remove', 'dangr');
+    setList([]);
+  }
+
   return (
   <>
     <section className='section-center'>
@@ -57,8 +67,8 @@ const App_26 = () => {
       </form>
       {list.length > 0 && (
         <div className='grocery-containr'>
-            <List_26 items = {list}/>
-            <button className='clear-btn'> clear items</button>
+            <List_26 items = {list} removeItem ={removeItem}/>
+            <button className='clear-btn' onClick={clearList}> clear items</button>
         </div>
       )}
     </section>

@@ -1,81 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import List_26 from './components/List_26'
-import Alert_26 from './components/Alert_26'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home_26 from './pages/Home_26';
+import About_26 from './pages/About_26';
+import Products_26 from './pages/Products_26';
+import Error_26 from './pages/Error_26';
+import SharedLayout_26 from './pages/SharedLayout_26';
+import SharedProductLayout_26 from './pages/SharedProductLayout_26';
+import SingleProduct_26 from './pages/SingleProduct_26';
+import Booklist_26 from './pages/Booklist_26';
 
-const getLocalStorage = () => {
-  let list = localStorage.getItem('list');
-  if(list) {
-    return JSON.parse(localStorage.getItem('list'));
-  } else {
-    return [];
-  }
-}
-
-const App_26 = () => {
-  const [name, setName] = useState('');
-  const [list, setList] = useState(getLocalStorage());
-  const [alert, setAlert] = useState({
-    show: false,
-    msg: '',
-    type: ''
-  });
-
-  useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
-  }, [list]);
-
-  const showAlert = (show = false, msg = '', type = '') => {
-    setAlert({show, msg, type});
-  }
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();//自己控制
-    if(!name) {
-      showAlert(true, 'pleae enter value', 'danger')
-    }else {
-      showAlert(true, 'value changed', 'success');
-      const newItem = {
-        id: new Date().getTime().toString(),
-        title: name,
-      };
-      setList([...list, newItem]);
-      setName('');
-    }
-  };
-
-  const removeItem = (id) => {
-    showAlert(true, 'item remove', 'dangr');
-    setList(list.filter( (item) => item.id !== id));
-  }
-
-  const clearList = () => {
-    showAlert(true, 'item remove', 'dangr');
-    setList([]);
-  }
-
+function App() {
   return (
-  <>
-    <section className='section-center'>
-      <form className='grocery-form' onSubmit={handleSubmit}>
-        {alert.show && <Alert_26 {...alert} removeAlert = {showAlert} />}
-        <h3>Grocery Bud - 210410626</h3>
-          <div className='form-control'>
-            <input type='text' className='grocery' placeholder='e.g.eggs' value={name} onChange = {(e) => {setName(e.target.value)}}/>
-            <button type='submit' className='submit-btn' placeholder='e.g.'>submit</button>
-          </div>
-      </form>
-      {list.length > 0 && (
-        <div className='grocery-containr'>
-            <List_26 items = {list} removeItem ={removeItem}/>
-            <button className='clear-btn' onClick={clearList}> clear items</button>
-        </div>
-      )}
-    </section>
-  
-  </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path = '/' element = {<SharedLayout_26 />}>
+          <Route index element = {<Home_26 />} />
+          <Route path = 'about' element = {<About_26 />} />
+          <Route path = 'Products' element = {<SharedProductLayout_26 />} >
+          <Route index element = {<Products_26 />} />
+          <Route path = ":productId" element = {<SingleProduct_26 />}/>
+          </Route>
+          <Route path ="booklist" element = {<Booklist_26 />} />
+          <Route path = '*' element = {<Error_26 />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-
-export default App_26
+export default App;

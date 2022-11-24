@@ -45,12 +45,12 @@ const App_26 = () => {
   };
 
   const removeItem = (id) => {
-    showAlert(true, 'item remove', 'dangr');
+    showAlert(true, 'item remove', 'danger');
     setList(list.filter( (item) => item.id !== id));
   }
 
   const clearList = () => {
-    showAlert(true, 'item remove', 'dangr');
+    showAlert(true, 'item remove', 'danger');
     setList([]);
   }
 

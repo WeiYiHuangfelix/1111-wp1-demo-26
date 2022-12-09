@@ -19,6 +19,7 @@ const T81_26_ContextAPI = () => {
     </PersonContext.Provider>
   );
 };
+
 const List = () => {
   const mainData = useContext(PersonContext);
   console.log('mainData', mainData);
